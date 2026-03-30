@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <title>Welcome | Discord Server</title>
@@ -19,7 +19,7 @@
       height: 100vh;
       overflow: hidden;
       color: #fff;
-      /* Gradiente rosa animato */
+      /* Animated pink gradient background */
       background: linear-gradient(-45deg, #ff9a9e, #fecfef, #fcbad3, #ff99ac);
       background-size: 400% 400%;
       animation: gradientMove 15s ease infinite;
@@ -29,7 +29,7 @@
       position: relative;
     }
 
-    /* Effetto “nebbia” rosa sopra lo sfondo */
+    /* Soft pink “fog” overlay */
     .overlay {
       position: absolute;
       inset: 0;
@@ -41,7 +41,7 @@
       animation: overlayPulse 8s ease-in-out infinite alternate;
     }
 
-    /* Container principale */
+    /* Main container */
     .container {
       position: relative;
       z-index: 1;
@@ -216,7 +216,7 @@
       opacity: 0.8;
     }
 
-    /* Cuoricini/flakes animati */
+    /* More floating hearts / flakes */
     .floating-hearts span {
       position: absolute;
       display: block;
@@ -249,42 +249,19 @@
       top: 0;
     }
 
-    /* Posizioni diverse per ogni cuore */
-    .floating-hearts span:nth-child(1) {
-      left: 5%;
-      animation-delay: 0s;
-      animation-duration: 18s;
-    }
-
-    .floating-hearts span:nth-child(2) {
-      left: 20%;
-      animation-delay: 3s;
-      animation-duration: 16s;
-    }
-
-    .floating-hearts span:nth-child(3) {
-      left: 35%;
-      animation-delay: 6s;
-      animation-duration: 22s;
-    }
-
-    .floating-hearts span:nth-child(4) {
-      left: 55%;
-      animation-delay: 2s;
-      animation-duration: 19s;
-    }
-
-    .floating-hearts span:nth-child(5) {
-      left: 70%;
-      animation-delay: 5s;
-      animation-duration: 17s;
-    }
-
-    .floating-hearts span:nth-child(6) {
-      left: 85%;
-      animation-delay: 1s;
-      animation-duration: 21s;
-    }
+    /* Positions for each heart */
+    .floating-hearts span:nth-child(1)  { left: 4%;  animation-delay: 0s;  animation-duration: 18s; }
+    .floating-hearts span:nth-child(2)  { left: 12%; animation-delay: 3s;  animation-duration: 16s; }
+    .floating-hearts span:nth-child(3)  { left: 20%; animation-delay: 6s;  animation-duration: 22s; }
+    .floating-hearts span:nth-child(4)  { left: 30%; animation-delay: 2s;  animation-duration: 19s; }
+    .floating-hearts span:nth-child(5)  { left: 40%; animation-delay: 5s;  animation-duration: 17s; }
+    .floating-hearts span:nth-child(6)  { left: 50%; animation-delay: 1s;  animation-duration: 21s; }
+    .floating-hearts span:nth-child(7)  { left: 60%; animation-delay: 4s;  animation-duration: 20s; }
+    .floating-hearts span:nth-child(8)  { left: 68%; animation-delay: 7s;  animation-duration: 18s; }
+    .floating-hearts span:nth-child(9)  { left: 76%; animation-delay: 2.5s;animation-duration: 23s; }
+    .floating-hearts span:nth-child(10) { left: 84%; animation-delay: 5.5s;animation-duration: 19s; }
+    .floating-hearts span:nth-child(11) { left: 92%; animation-delay: 1.5s;animation-duration: 21s; }
+    .floating-hearts span:nth-child(12) { left: 15%; animation-delay: 8s;  animation-duration: 24s; }
 
     /* Keyframes */
 
@@ -380,8 +357,15 @@
 </head>
 <body>
   <div class="overlay"></div>
+
   <div class="floating-hearts">
-    <!-- più span = più cuori / "particelle" -->
+    <!-- more spans = more hearts / particles -->
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
     <span></span>
     <span></span>
     <span></span>
@@ -394,7 +378,7 @@
     <div class="pill">Welcome to Discord</div>
     <h1>Suzuki &amp; Yusuke’s World</h1>
     <p class="subtitle">
-      Un server per chi ama le vibrazioni da high school romance, i contrasti di carattere e le storie che fanno battere il cuore.
+      A server for everyone who loves high school romance vibes, clashing personalities, and stories that make your heart race.
     </p>
 
     <section class="content">
@@ -411,19 +395,19 @@
 
       <aside class="cta">
         <div>
-          <p class="cta-title">Cosa troverai nel server:</p>
+          <p class="cta-title">What you'll find on the server:</p>
           <ul class="cta-list">
-            <li>Vibes rosa, chill e romantiche.</li>
-            <li>Chat per parlare di anime, scuola e drammi amorosi.</li>
-            <li>Spazio safe per timidi, estroversi e tutto ciò che c’è in mezzo.</li>
+            <li>Soft pink, chill and romantic vibes.</li>
+            <li>Chats to talk about anime, school, and romantic drama.</li>
+            <li>A safe space for shy people, extroverts, and everyone in between.</li>
           </ul>
         </div>
 
         <a class="btn-discord" href="https://discord.gg/QmEyK2Hr7h" target="_blank" rel="noopener noreferrer">
-          <span>Entra su Discord</span>
+          <span>Join the Discord</span>
           <span>💗</span>
         </a>
-        <p class="small-note">Unisciti a noi e scopri se gli opposti si attraggono davvero.</p>
+        <p class="small-note">Join us and find out if opposites really do attract.</p>
       </aside>
     </section>
   </main>
