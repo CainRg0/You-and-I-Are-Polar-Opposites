@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <title>Welcome | Discord Server</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet" />
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      height: 100vh;
+      overflow: hidden;
+      color: #fff;
+      /* Gradiente rosa animato */
+      background: linear-gradient(-45deg, #ff9a9e, #fecfef, #fcbad3, #ff99ac);
+      background-size: 400% 400%;
+      animation: gradientMove 15s ease infinite;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    /* Effetto “nebbia” rosa sopra lo sfondo */
+    .overlay {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.25), transparent 55%),
+                  radial-gradient(circle at 90% 80%, rgba(255, 192, 203, 0.25), transparent 55%);
+      mix-blend-mode: screen;
+      pointer-events: none;
+      z-index: 0;
+      animation: overlayPulse 8s ease-in-out infinite alternate;
+    }
+
+    /* Container principale */
+    .container {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      width: 90%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+      padding: 2.5rem 2rem;
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.10);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      box-shadow:
+        0 20px 45px rgba(0, 0, 0, 0.3),
+        0 0 40px rgba(255, 192, 203, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      animation: cardFadeIn 1s ease-out forwards;
+      transform-origin: center;
+    }
+
+    .pill {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      padding: 0.35rem 0.85rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.25);
+      color: #4d002e;
+      font-weight: 600;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.35);
+      animation: pillGlow 2.5s ease-in-out infinite alternate;
+    }
+
+    h1 {
+      font-size: clamp(2.3rem, 4vw, 3rem);
+      text-align: center;
+      font-weight: 700;
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+      line-height: 1.1;
+    }
+
+    .subtitle {
+      font-size: 0.95rem;
+      opacity: 0.9;
+      text-align: center;
+      max-width: 520px;
+    }
+
+    .content {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      gap: 2rem;
+      width: 100%;
+    }
+
+    @media (max-width: 800px) {
+      .content {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .description {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      background: rgba(0, 0, 0, 0.25);
+      border-radius: 16px;
+      padding: 1.2rem 1.3rem;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.25);
+      animation: descriptionSlide 0.9s 0.1s ease-out both;
+    }
+
+    .highlight {
+      color: #ffe1f0;
+      font-weight: 600;
+    }
+
+    .tagline {
+      font-size: 0.85rem;
+      opacity: 0.85;
+      margin-top: 0.75rem;
+      font-style: italic;
+    }
+
+    .cta {
+      display: flex;
+      flex-direction: column;
+      gap: 1.1rem;
+      align-items: flex-start;
+      justify-content: center;
+    }
+
+    .cta-title {
+      font-size: 1.15rem;
+      font-weight: 600;
+    }
+
+    .cta-list {
+      font-size: 0.9rem;
+      opacity: 0.9;
+      list-style: none;
+    }
+
+    .cta-list li::before {
+      content: "✦";
+      margin-right: 0.4rem;
+      color: #ffe1f0;
+    }
+
+    .btn-discord {
+      margin-top: 0.5rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.8rem 1.5rem;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      background: linear-gradient(120deg, #ff6fb5, #ff93c9, #ffc3e1);
+      color: #3e0030;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      position: relative;
+      overflow: hidden;
+      box-shadow:
+        0 0 20px rgba(255, 182, 193, 0.9),
+        0 8px 20px rgba(0, 0, 0, 0.4);
+      animation: buttonFloat 2.5s ease-in-out infinite alternate;
+    }
+
+    .btn-discord::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background: conic-gradient(
+        from 180deg,
+        rgba(255, 255, 255, 0.75),
+        transparent,
+        rgba(255, 255, 255, 0.9),
+        transparent,
+        rgba(255, 255, 255, 0.75)
+      );
+      animation: buttonGlow 4s linear infinite;
+      opacity: 0.3;
+      pointer-events: none;
+    }
+
+    .btn-discord span {
+      position: relative;
+      z-index: 1;
+    }
+
+    .btn-discord:hover {
+      transform: translateY(-2px) scale(1.02);
+      box-shadow:
+        0 0 30px rgba(255, 182, 193, 1),
+        0 10px 26px rgba(0, 0, 0, 0.55);
+    }
+
+    .btn-discord:active {
+      transform: translateY(0) scale(0.98);
+      box-shadow:
+        0 0 18px rgba(255, 182, 193, 0.8),
+        0 6px 16px rgba(0, 0, 0, 0.5);
+    }
+
+    .small-note {
+      font-size: 0.75rem;
+      opacity: 0.8;
+    }
+
+    /* Cuoricini/flakes animati */
+    .floating-hearts span {
+      position: absolute;
+      display: block;
+      width: 18px;
+      height: 18px;
+      background: rgba(255, 255, 255, 0.7);
+      transform: rotate(45deg);
+      border-radius: 4px;
+      animation: hearts 12s linear infinite;
+      filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.9));
+    }
+
+    .floating-hearts span::before,
+    .floating-hearts span::after {
+      content: "";
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      background: inherit;
+      border-radius: 50%;
+    }
+
+    .floating-hearts span::before {
+      top: -9px;
+      left: 0;
+    }
+
+    .floating-hearts span::after {
+      left: -9px;
+      top: 0;
+    }
+
+    /* Posizioni diverse per ogni cuore */
+    .floating-hearts span:nth-child(1) {
+      left: 5%;
+      animation-delay: 0s;
+      animation-duration: 18s;
+    }
+
+    .floating-hearts span:nth-child(2) {
+      left: 20%;
+      animation-delay: 3s;
+      animation-duration: 16s;
+    }
+
+    .floating-hearts span:nth-child(3) {
+      left: 35%;
+      animation-delay: 6s;
+      animation-duration: 22s;
+    }
+
+    .floating-hearts span:nth-child(4) {
+      left: 55%;
+      animation-delay: 2s;
+      animation-duration: 19s;
+    }
+
+    .floating-hearts span:nth-child(5) {
+      left: 70%;
+      animation-delay: 5s;
+      animation-duration: 17s;
+    }
+
+    .floating-hearts span:nth-child(6) {
+      left: 85%;
+      animation-delay: 1s;
+      animation-duration: 21s;
+    }
+
+    /* Keyframes */
+
+    @keyframes gradientMove {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    @keyframes overlayPulse {
+      0% {
+        opacity: 0.25;
+        transform: scale(1);
+      }
+      100% {
+        opacity: 0.6;
+        transform: scale(1.05);
+      }
+    }
+
+    @keyframes cardFadeIn {
+      0% {
+        opacity: 0;
+        transform: translateY(20px) scale(0.97);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    @keyframes pillGlow {
+      0% {
+        box-shadow: 0 0 12px rgba(255, 255, 255, 0.3);
+      }
+      100% {
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+      }
+    }
+
+    @keyframes descriptionSlide {
+      0% {
+        opacity: 0;
+        transform: translateX(-12px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes buttonFloat {
+      0% {
+        transform: translateY(0);
+      }
+      100% {
+        transform: translateY(-6px);
+      }
+    }
+
+    @keyframes buttonGlow {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes hearts {
+      0% {
+        transform: translateY(100vh) scale(0.3) rotate(45deg);
+        opacity: 0;
+      }
+      20% {
+        opacity: 1;
+      }
+      80% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-20vh) scale(1) rotate(45deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay"></div>
+  <div class="floating-hearts">
+    <!-- più span = più cuori / "particelle" -->
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <main class="container">
+    <div class="pill">Welcome to Discord</div>
+    <h1>Suzuki &amp; Yusuke’s World</h1>
+    <p class="subtitle">
+      Un server per chi ama le vibrazioni da high school romance, i contrasti di carattere e le storie che fanno battere il cuore.
+    </p>
+
+    <section class="content">
+      <article class="description">
+        <p>
+          Suzuki’s a <span class="highlight">high school girl in love</span>, but the guy she’s fallen for is nothing like her!
+          While she’s cheerful, outgoing, and always trying to fit in, her classmate Yusuke Tani is
+          <span class="highlight">stoic, quiet, and doesn’t seem to care</span> what people think of him.
+        </p>
+        <p class="tagline">
+          Will Suzuki be able to overcome her anxieties and ask him out, or will she discover that opposites really don’t attract?
+        </p>
+      </article>
+
+      <aside class="cta">
+        <div>
+          <p class="cta-title">Cosa troverai nel server:</p>
+          <ul class="cta-list">
+            <li>Vibes rosa, chill e romantiche.</li>
+            <li>Chat per parlare di anime, scuola e drammi amorosi.</li>
+            <li>Spazio safe per timidi, estroversi e tutto ciò che c’è in mezzo.</li>
+          </ul>
+        </div>
+
+        <a class="btn-discord" href="https://discord.gg/QmEyK2Hr7h" target="_blank" rel="noopener noreferrer">
+          <span>Entra su Discord</span>
+          <span>💗</span>
+        </a>
+        <p class="small-note">Unisciti a noi e scopri se gli opposti si attraggono davvero.</p>
+      </aside>
+    </section>
+  </main>
+</body>
+</html>
